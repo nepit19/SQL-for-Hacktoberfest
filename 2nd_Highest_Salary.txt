@@ -1,0 +1,14 @@
+Query for finding the 2nd highest salary
+
+SELECT name, MAX(salary) AS salary 
+FROM employee 
+WHERE salary IN
+(SELECT salary FROM employee MINUS SELECT MAX(salary) 
+FROM employee); 
+
+OR
+
+SELECT name, MAX(salary) AS salary 
+FROM employee 
+WHERE salary <> (SELECT MAX(salary) 
+FROM employee);
